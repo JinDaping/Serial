@@ -1,0 +1,8 @@
+prefix=/home/ubuntu/zky_robot/devel
+
+Name: serial
+Description: Description of serial
+Version: 0.0.0
+Cflags: -I/home/ubuntu/zky_robot/devel/include -I/home/ubuntu/zky_robot/src/serial/include
+Libs: -L/home/ubuntu/zky_robot/devel/lib 
+Requires: message_runtime
