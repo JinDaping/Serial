@@ -218,12 +218,12 @@ int Serial::set_Parity(int fd, int databits, int stopbits, int parity) {
   tcflush(fd, TCIFLUSH);
   options.c_cc[VTIME] = 150; /* 15 seconds*/
   options.c_cc[VMIN] = 0;    /* Update the options and do it NOW */
+  options.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG); /*Input*/
+  options.c_oflag &= ~OPOST;                          /*Output*/
   if (tcsetattr(fd, TCSANOW, &options) != 0) {
     perror("SetupSerial 3");
     return (FALSE);
   }
-  options.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG); /*Input*/
-  options.c_oflag &= ~OPOST;                          /*Output*/
   return (TRUE);
 }
 
